@@ -1,52 +1,68 @@
 body{
-    background-image: linear-gradient(to top right, #8B5CF6, #EC4899);
-    min-height: 100vh;
-    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: monospace;
+    height: 100vh;
+    margin: 0;
+    background-image: linear-gradient(to bottom right, #1E2853, #482558);
 }
-.slider{
+.box{
     position: relative;
-    margin-top: 100px;
+    width: 300px;
+    height:400px;
+    margin: 50px;
+}
+.bg{
+    position: absolute;
+    background-image: url(bg2.jpg);
     width: 100%;
-    height: 370px;
-    overflow: hidden;
+    height: 100%;
+    background-size: cover;
+    border-radius: 5px;
+    transition: 1s;
 }
-.item{
+.box:hover .bg{
+    transform: perspective(20px) rotateX(2deg) translateY(-50px);
+}
+
+.bird{
     position: absolute;
-    width: 200px;
-    height: 320px;
-    text-align: justify;
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 20px;
-    transition:  0.5s;
-    left: calc(50% - 110px);
-    top: 0;
+    width: 300px ;
+    height: 300px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    animation: gifAnimation 0.1s linear infinite;
+    bottom: 0;
+    animation-play-state: paused!important;
+    transition: 1s;
+
 }
-#next{
-    position: absolute;
-    right: 50px;
-    top: 40%;
+
+.box:hover .bird{
+    animation-play-state:running!important;
+    transform: translateY(-200px) translateX(-50px);
 }
-#prev{
-    position: absolute;
-    left: 50px;
-    top: 40%;
+@keyframes gifAnimation{
+    from{
+        background-image: url(img21.png);
+    }
+    to{
+        background-image: url(img22.png);
+    }
 }
-#prev, #next{
-    color: #fff;
-    background: none;
-    border: none;
-    font-size: xxx-large;
-    font-family: monospace;
-    font-weight: bold;
-    opacity: 0.5;
-    transition: opacity 0.5s;
+
+
+@keyframes gifAnimation1{
+    from{
+        background-image: url(img11.png);
+    }
+    to{
+        background-image: url(img12.png);
+    }
 }
-#prev:hover,
-#next:hover{
-    opacity: 1;
+.box:nth-child(2) .bird{
+    animation: gifAnimation1 0.1s linear infinite;
+}
+.box:nth-child(2) .bg{
+    background-image: url(bg.jpg);
 }
